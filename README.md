@@ -2,6 +2,4 @@
 - createdb.py       データベースファイルを作成
 - create_table.py   テーブル作成
 - mod_table.py      テーブル名変更
-
-[ ]テーブルへの入力
-
+- schema.py         テーブルの内容表示
