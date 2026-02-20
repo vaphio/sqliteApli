@@ -11,7 +11,8 @@ cursor = conn.cursor()
 sql = '''CREATE TABLE IF NOT EXISTS ''' + sys.argv[2]
 sql = sql +  ''' (
      id TEXT PRIMARY KEY,
-     name TEXT,
+     book TEXT,
+     title TEXT,
      auther TEXT,
      revdt INTEGER
     )'''
