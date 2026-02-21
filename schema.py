@@ -1,25 +1,22 @@
-import sqlite3
+# display table schema
+# need 2 arguments for dbfile and table name
+
+import sqfunc
 import sys
-
-dbpath = 'book.db'
-
-def open(dbpath):
-    conn = sqlite3.connect(dbpath)
-    cursor = conn.cursor()
-    return conn, cursor
-
-def close(cursor, conn):
-    cursor.close()
-    conn.close()
 
 def prinfo(info):
     for line in info:
         print(line)
 
-conn, cursor = open(dbpath)
-sql = '''PRAGMA TABLE_INFO(''' + sys.argv[1] + ')'
-print(sql)
-db_info = cursor.execute(sql).fetchall()
-prinfo(db_info)
+if len(sys.argv)<3:
+    print('nees 2 arguments for database file name and table name')
+    exit
+else:
+    dbpath = sys.argv[1]
+    conn, cursor = sqfunc.open(dbpath)
+    sql = '''PRAGMA TABLE_INFO(''' + sys.argv[2] + ')'
+    print(sql)
+    db_info = cursor.execute(sql).fetchall()
+    prinfo(db_info)
 
-close(cursor, conn)
+    sqfunc.close(cursor, conn)

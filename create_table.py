@@ -1,13 +1,12 @@
 # create table for SQLite database file
 # need 2 arguments for database file and table name
 
-import sqlite3
+import sqfunc
 import sys
 
 dbpath = sys.argv[1]
-conn = sqlite3.connect(dbpath)
+conn, cursor = sqfunc.open(dbpath)
 
-cursor = conn.cursor()
 sql = '''CREATE TABLE IF NOT EXISTS ''' + sys.argv[2]
 sql = sql +  ''' (
      id TEXT PRIMARY KEY,
@@ -20,5 +19,4 @@ sql = sql +  ''' (
 cursor.execute(sql)
 conn.commit()
 
-cursor.close()
-conn.close()
+sqfunc.close(cursor, conn)

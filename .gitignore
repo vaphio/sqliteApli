@@ -2,3 +2,4 @@
 # remove db file
 
 *.db
+__py*
